@@ -1,7 +1,7 @@
 import sys
 if  sys.version_info < (3,0):
     input=raw_input
-from pymysql2.__init__ import session
+from mysqlcp.__init__ import session
 
 msg="""Usage:
 
