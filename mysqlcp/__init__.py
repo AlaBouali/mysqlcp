@@ -334,14 +334,15 @@ class pool:
       con.reconnect()
       self.rec+=1
     except:
-        self.kill_connection()
-        self.connect_to_host
+        self.kill_connection(con)
+        self.connect_to_host()
         self.rec+=1
  def set_check_interval(self,interval):
      self.stop_check()
      self.configs["check_interval"]=interval
      self.start_check()
  def close_connection(self,con):
+    if con not in self.pool:
      if len(self.pool)>=self.configs["max_connections"]:
          self.kill_connection(con)
          return
