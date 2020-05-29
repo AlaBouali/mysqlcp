@@ -342,6 +342,7 @@ class pool:
      self.configs["check_interval"]=interval
      self.start_check()
  def close_connection(self,con):
+   if con:
     if con not in self.pool:
      if len(self.pool)>=self.configs["max_connections"]:
          self.kill_connection(con)
@@ -351,6 +352,7 @@ class pool:
      self.pool.append(con)
      self.available=len(self.pool)
  def kill_connection(self,con):
+    if con:
      con.destroy()
      self.size-=1
      self.used-=1
